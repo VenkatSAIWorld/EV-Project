@@ -8,26 +8,26 @@ class ChargingDetails extends StatefulWidget {
 }
 
 class _ChargingDetailsState extends State<ChargingDetails> {
+  var _chargerType;
+  var _carMake;
+  var _carModel;
+  var typesOfCharger = [
+    "Rapid 50kW 20mins",
+    "Fast 7kW(4-6hrs) or 22kW(1-2hrs)",
+    "slow 3-6kW(8-12hrs)"
+  ];
+  var carModels = [
+    "Tesla Model3",
+    "Tata Nexon EV",
+    "Tata Tigor EV",
+    "MG ZS EV",
+    "Toyota Camry",
+    "Volvo XC40"
+  ];
+
+  var carsMake = ["Tesla", "Tata", "MG", "Toyota", "Volvo"];
   @override
   Widget build(BuildContext context) {
-    var _chargerType;
-    var _carMake;
-    var _carModel;
-    var typesOfCharger = [
-      "Rapid 50kW 20mins",
-      "Fast 7kW(4-6hrs) or 22kW(1-2hrs)",
-      "slow 3-6kW(8-12hrs)"
-    ];
-    var carModels = [
-      "Tesla Model3",
-      "Tata Nexon EV",
-      "Tata Tigor EV",
-      "MG ZS EV",
-      "Toyota Camry",
-      "Volvo XC40"
-    ];
-
-    var carMake = ["Tesla", "Tata", "MG", "Toyota", "Volvo"];
     return MaterialApp(
       home: Scaffold(
         body: Column(
@@ -56,14 +56,15 @@ class _ChargingDetailsState extends State<ChargingDetails> {
                       child: DropdownButton<String>(
                         value: _chargerType,
                         isDense: true,
-                        items: typesOfCharger.map((String values) {
+                        items: typesOfCharger
+                            .map<DropdownMenuItem<String>>((String values) {
                           return DropdownMenuItem<String>(
                               child: Text(values), value: values);
                         }).toList(),
-                        onChanged: (String? newVal) {
+                        onChanged: (newVal) {
                           setState(() {
                             _chargerType = newVal!;
-                            State.didChange(newVal);
+                            //State.didChange(newVal);
                           });
                         },
                       ),
@@ -90,14 +91,14 @@ class _ChargingDetailsState extends State<ChargingDetails> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: _carMake,
-                        items: carMake.map((String values) {
+                        items: carsMake.map((String values) {
                           return DropdownMenuItem<String>(
                               child: Text(values), value: values);
                         }).toList(),
-                        onChanged: (String? newVal) {
+                        onChanged: (newVal) {
                           setState(() {
                             _carMake = newVal!;
-                            State.didChange(newVal);
+                            //State.didChange(newVal);
                           });
                         },
                       ),
@@ -128,10 +129,10 @@ class _ChargingDetailsState extends State<ChargingDetails> {
                           return DropdownMenuItem<String>(
                               child: Text(values), value: values);
                         }).toList(),
-                        onChanged: (String? newVal) {
+                        onChanged: (newVal) {
                           setState(() {
                             _carModel = newVal!;
-                            State.didChange(newVal);
+                            //State.didChange(newVal);
                           });
                         },
                       ),
