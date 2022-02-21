@@ -118,7 +118,7 @@ class _UserDetailsState extends State<UserDetails> {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green)),
                 onPressed: () async {
-                  await Navigator.pushNamed(context, "/dbpage");
+                  //await Navigator.pushNamed(context, "/dbpage");
                   Navigator.pushNamed(context, "/slots");
                 },
                 onLongPress: () async {
