@@ -8,13 +8,13 @@ class Hosting extends StatefulWidget {
 }
 
 class _HostingState extends State<Hosting> {
-  var _chargerType = "";
+  var _chargerType;
   var typesOfCharger = [
     "Rapid 50kW 20mins",
     "Fast 7kW(4-6hrs) or 22kW(1-2hrs)",
     "slow 3-6kW(8-12hrs)"
   ];
-  var _power = "";
+  var _power;
   var _powerList = [
     "50kW(20mins)",
     "7kW(4-6hrs)",
@@ -46,14 +46,15 @@ class _HostingState extends State<Hosting> {
                   isEmpty: _chargerType == null || _chargerType == "",
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      value: _chargerType,
                       items: typesOfCharger
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem(
                             value: value, child: Text(value));
                       }).toList(),
-                      onChanged: (String? newVal) {
+                      onChanged: (newVal) {
                         setState(() {
-                          _chargerType = newVal!;
+                          _chargerType = newVal;
                         });
                       },
                     ),
@@ -72,14 +73,15 @@ class _HostingState extends State<Hosting> {
                   isEmpty: _power == null || _power == "",
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
+                      value: _power,
                       items: _powerList
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem(
                             value: value, child: Text(value));
                       }).toList(),
-                      onChanged: (String? newVal) {
+                      onChanged: (newVal) {
                         setState(() {
-                          _chargerType = newVal!;
+                          _power = newVal;
                         });
                       },
                     ),
